@@ -66,13 +66,13 @@ public class BallController : MonoBehaviour
     {
         dt = 0.05f;
         balls    = new ArrayList();
-        Posarray = new Vector3[2];
-        Velarray = new Vector3[2];
-        for (int i = 0; i < 2  ; i++)
+        Posarray = new Vector3[20];
+        Velarray = new Vector3[20];
+        for (int i = 0; i < 20  ; i++)
         {
             GameObject newBall = Instantiate(Ballpref);
             newBall.transform.parent = transform;
-            Pos= new Vector3(20 + i * 10, 20, 20);
+            Pos= new Vector3(20 + i * 5, 20, 20);
             Vel = new Vector3(0,0,0);
             newBall.transform.position = Pos;
             Posarray[i]=newBall.transform.position;
@@ -85,7 +85,7 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < 2; i++)
+        for (int i = 0; i < 20; i++)
         {
             Pos = Posarray[i];
             Vel = Velarray[i];
