@@ -13,6 +13,7 @@ public class BallController : MonoBehaviour
     private Vector3[] Velarray;
     private ArrayList balls;
     private int i1;
+    private int nball=4;
     //private var posStore = new List<Vector3>();
     //--------------------------------------------------------------------------
     private Vector6 Concatenate(Vector3 Pos, Vector3 Vel)
@@ -66,18 +67,21 @@ public class BallController : MonoBehaviour
     {
         dt = 0.05f;
         balls    = new ArrayList();
-        Posarray = new Vector3[20];
-        Velarray = new Vector3[20];
-        for (int i = 0; i < 20  ; i++)
+        Posarray = new Vector3[nball];
+        Velarray = new Vector3[nball];
+        int j = 0;
+        for (int i = 0; i < nball; i++)
         {
             GameObject newBall = Instantiate(Ballpref);
             newBall.transform.parent = transform;
-            Pos= new Vector3(20 + i * 5, 20, 20);
+            j = 10 +i * 5;
+            Pos= new Vector3(j, 20, 20);
             Vel = new Vector3(0,0,0);
             newBall.transform.position = Pos;
             Posarray[i]=newBall.transform.position;
             Velarray[i]=Vel;
             balls.Add(newBall.gameObject);
+            Debug.Log("pos"+i+Posarray[i]);
 
         }
     }
@@ -85,21 +89,21 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        for (int i = 0; i < 20; i++)
-        {
-            Pos = Posarray[i];
-            Vel = Velarray[i];
-            Vector6 XV = NewXV(Pos, Vel, dt);
-            Pos = getPos(XV);
-            Vel = getVel(XV);
-            Posarray[i] = Pos;
-            Velarray[i] = Vel;
-        }
-        i1 = 0;
-        foreach (GameObject ball in balls)
-            ball.transform.position = Posarray[i1];
-            i1++;
-        {
-        }
+        //for (int i = 0; i < nball; i++)
+        //{
+        //    Pos = Posarray[i];
+        //    Vel = Velarray[i];
+        //    Vector6 XV = NewXV(Pos, Vel, dt);
+        //    Pos = getPos(XV);
+        //    Vel = getVel(XV);
+        //    Posarray[i] = Pos;
+        //    Velarray[i] = Vel;
+        //}
+        //i1 = 0;
+        //foreach (GameObject ball in balls)
+        //    ball.transform.position = Posarray[i1];
+        //    i1++;
+        //{
+        //}
     }
 }
