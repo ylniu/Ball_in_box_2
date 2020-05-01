@@ -81,7 +81,7 @@ public class BallController : MonoBehaviour
             Posarray[i]=newBall.transform.position;
             Velarray[i]=Vel;
             balls.Add(newBall.gameObject);
-            Debug.Log("pos"+i+Posarray[i]);
+            Debug.Log("pos--0--" + i + Posarray[i]);
 
         }
     }
@@ -89,21 +89,23 @@ public class BallController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //for (int i = 0; i < nball; i++)
-        //{
-        //    Pos = Posarray[i];
-        //    Vel = Velarray[i];
-        //    Vector6 XV = NewXV(Pos, Vel, dt);
-        //    Pos = getPos(XV);
-        //    Vel = getVel(XV);
-        //    Posarray[i] = Pos;
-        //    Velarray[i] = Vel;
-        //}
-        //i1 = 0;
-        //foreach (GameObject ball in balls)
-        //    ball.transform.position = Posarray[i1];
-        //    i1++;
-        //{
-        //}
+        for (int i = 0; i < nball; i++)
+        {
+            Pos = Posarray[i];
+            Vel = Velarray[i];
+            Debug.Log("pos--1--" + i + Posarray[i]);
+            Vector6 XV = NewXV(Pos, Vel, dt);
+            Pos = getPos(XV);
+            Vel = getVel(XV);
+            Posarray[i] = Pos;
+            Velarray[i] = Vel;
+            Debug.Log("pos--2--" + i + Posarray[i]);
+        }
+        i1 = 0;
+        foreach (GameObject ball in balls)
+            balls[i1].transform.position = Posarray[i1];
+        i1++;
+        {
+        }
     }
 }
