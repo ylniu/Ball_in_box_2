@@ -11,9 +11,8 @@ public class BallController : MonoBehaviour
     private Vector3 Vel;
     private Vector3[] Posarray;
     private Vector3[] Velarray;
-    private ArrayList balls;
-    private int i1;
     private int nball=4;
+    private List<GameObject> balls;
     //private var posStore = new List<Vector3>();
     //--------------------------------------------------------------------------
     private Vector6 Concatenate(Vector3 Pos, Vector3 Vel)
@@ -66,7 +65,8 @@ public class BallController : MonoBehaviour
     void Start()
     {
         dt = 0.05f;
-        balls    = new ArrayList();
+        balls    = new List<GameObject>();
+        
         Posarray = new Vector3[nball];
         Velarray = new Vector3[nball];
         int j = 0;
@@ -81,7 +81,7 @@ public class BallController : MonoBehaviour
             Posarray[i]=newBall.transform.position;
             Velarray[i]=Vel;
             balls.Add(newBall.gameObject);
-            Debug.Log("pos--0--" + i + Posarray[i]);
+            //Debug.Log("pos--0--" + i + Posarray[i]);
 
         }
     }
@@ -93,19 +93,17 @@ public class BallController : MonoBehaviour
         {
             Pos = Posarray[i];
             Vel = Velarray[i];
-            Debug.Log("pos--1--" + i + Posarray[i]);
+            //Debug.Log("pos--1--" + i + Posarray[i]);
             Vector6 XV = NewXV(Pos, Vel, dt);
             Pos = getPos(XV);
             Vel = getVel(XV);
             Posarray[i] = Pos;
             Velarray[i] = Vel;
-            Debug.Log("pos--2--" + i + Posarray[i]);
+            //Debug.Log("pos--2--" + i + Posarray[i]);
         }
-        i1 = 0;
-        foreach (GameObject ball in balls)
-            balls[i1].transform.position = Posarray[i1];
-        i1++;
+        for (int i = 0; i < nball; i++)
         {
+            balls[i].transform.position = Posarray[i];
         }
     }
 }
