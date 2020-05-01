@@ -72,7 +72,7 @@ public class BallController : MonoBehaviour
         {
             GameObject newBall = Instantiate(Ballpref);
             newBall.transform.parent = transform;
-            Pos= new Vector3(20 + i * 5, 20, 20);
+            Pos= new Vector3(20 + i * 10, 20, 20);
             Vel = new Vector3(0,0,0);
             newBall.transform.position = Pos;
             Posarray[i]=newBall.transform.position;
