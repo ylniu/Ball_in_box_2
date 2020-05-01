@@ -73,15 +73,16 @@ public class BallController : MonoBehaviour
         for (int i = 0; i < nball; i++)
         {
             GameObject newBall = Instantiate(Ballpref);
+            MoveController ballscript = newBall.GetComponent<MoveController>();
             newBall.transform.parent = transform;
             j = 10 +i * 5;
             Pos= new Vector3(j, 20, 20);
             Vel = new Vector3(0,0,0);
             newBall.transform.position = Pos;
             Posarray[i]=newBall.transform.position;
-            Velarray[i]=Vel;
+            Velarray[i]= ballscript.v;
             balls.Add(newBall.gameObject);
-            //Debug.Log("pos--0--" + i + Posarray[i]);
+            Debug.Log("pos--0--" + i + ballscript.v);
 
         }
     }
@@ -93,13 +94,13 @@ public class BallController : MonoBehaviour
         {
             Pos = Posarray[i];
             Vel = Velarray[i];
-            //Debug.Log("pos--1--" + i + Posarray[i]);
+            Debug.Log("pos--1--" + i +Posarray[i] + Velarray[i]);
             Vector6 XV = NewXV(Pos, Vel, dt);
             Pos = getPos(XV);
             Vel = getVel(XV);
             Posarray[i] = Pos;
             Velarray[i] = Vel;
-            //Debug.Log("pos--2--" + i + Posarray[i]);
+            Debug.Log("pos--2--" + i + Posarray[i] + Velarray[i]);
         }
         for (int i = 0; i < nball; i++)
         {

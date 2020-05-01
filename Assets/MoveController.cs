@@ -9,6 +9,7 @@ public class MoveController : MonoBehaviour
     private float dt = 0.001f;
     private Vector3 Pos;
     private Vector3 Vel;
+    public Vector3 v;
     //--------------------------------------------------------------------------
     private Vector6 Concatenate(Vector3 Pos, Vector3 Vel)
     {
@@ -68,8 +69,8 @@ public class MoveController : MonoBehaviour
         //    ball.transform.position = Pos;
 
         //}
-
-    }
+        v = new Vector3(0.0f, 0.0f, 10000.0f);
+}
     //--------------------------------------------------------------------------
     // Update is called once per frame
     void Update()
