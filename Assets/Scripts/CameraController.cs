@@ -110,6 +110,26 @@ public class CameraController : MonoBehaviour
             //    transform.position = transform.rotation * new Vector3(0, 0, -60) + target.position;
             //    transform.position = transform.rotation * new Vector3(0, 0, -_smoothDistance) + target.position;
             //}
+
+            //鼠标滚轮的效果
+            //Camera.main.fieldOfView 摄像机的视野
+            //Camera.main.orthographicSize 摄像机的正交投影
+            //Zoom out
+            if (Input.GetAxis("Mouse ScrollWheel") < 0)
+            {
+                if (Camera.main.fieldOfView <= 100)
+                    Camera.main.fieldOfView += 2;
+                if (Camera.main.orthographicSize <= 20)
+                    Camera.main.orthographicSize += 0.5F;
+            }
+            //Zoom in
+            if (Input.GetAxis("Mouse ScrollWheel") > 0)
+            {
+                if (Camera.main.fieldOfView > 2)
+                    Camera.main.fieldOfView -= 2;
+                if (Camera.main.orthographicSize >= 1)
+                    Camera.main.orthographicSize -= 0.5F;
+            }
         }
     }
 }
