@@ -34,7 +34,7 @@ public class BallController : MonoBehaviour
         //
         nball = 2;
         ndyn = 20;
-        dt = 0.005f;
+        dt = 0.0001f;
         radius = 5.0f;
         diameter = radius * 2.0f;
         k = 0.05f;
